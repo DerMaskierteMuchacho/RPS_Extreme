@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  
+  loadbalencer:
+    image: nginx:alpine
+    ports:
+      - 80:80
+    volumes:
+      - "./default.conf:/etc/nginx/conf.d/default.conf"
+    depends_on:
+      - service
+  
+  service:
+    build: .
+    deploy:
+      mode: replicated
+      replicas: 2
+  
+  # service1:
+    # build: .
+    # ports:
+      # - 8090:80
+      # - 2019:2019
+
+  
+  # service2:
+    # build: .
+    # ports:
+      # - 8091:80
+      # - 2020:2019
+
+#  db:
+#    image: postgres:13-alpine
+#    volumes:
+#      - ./.db:/var/lib/postgresql/data
+#    ports:
+#      - 5432:5432
+#    environment:
+#      - POSTGRES_PASSWORD=password
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_DB=mydb
