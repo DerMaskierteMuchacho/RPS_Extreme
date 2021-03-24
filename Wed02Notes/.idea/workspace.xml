@@ -1,7 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="4067d0f0-807f-47dd-b61e-39b62114326c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Wed02Notes.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wed02Notes/.idea/Wed02Notes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Wed02Notes/.idea/Wed02Notes.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wed02Notes/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wed02Notes/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wed02Notes/.idea/jsLibraryMappings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Wed02Notes/data/notes.db" beforeDir="false" afterPath="$PROJECT_DIR$/Wed02Notes/data/notes.db" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Wed02Notes" />
+  </component>
+  <component name="ProjectId" id="1ptDzFJT17nNYos4w1TB1PF1aHv" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$USER_HOME$/OneDrive/Dokumente/HSR/_Coding Projekte/_WebStorm/ruwens_website" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="configurable.group.tools" />
+    <property name="ts.external.directory.path" value="C:\Users\ruwen\OneDrive\Dokumente\HSR\_Coding Projekte\_docker\Challenge Task\Wed02Notes\Wed02Notes\node_modules\typescript\lib" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4067d0f0-807f-47dd-b61e-39b62114326c" name="Default Changelist" comment="" />
+      <created>1615993753426</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615993753426</updated>
+      <workItem from="1615993754601" duration="838000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/Wed02Notes/index.js.map" />
+        <option value="$PROJECT_DIR$/Wed02Notes/index.js" />
+        <option value="$PROJECT_DIR$/Wed02Notes/routes/noteRoutes.js" />
+        <option value="$PROJECT_DIR$/Wed02Notes/helpers/indexHelper.js" />
+        <option value="$PROJECT_DIR$/Wed02Notes/helpers/displayHelper.js" />
+        <option value="$PROJECT_DIR$/Wed02Notes/services/noteStore.js" />
+        <option value="$PROJECT_DIR$/Wed02Notes/controllers/styleController.js" />
+        <option value="$PROJECT_DIR$/Wed02Notes/controllers/notesController.js" />
+      </list>
+    </option>
   </component>
 </project>
