@@ -16,8 +16,10 @@ export async function getServerRanking(responseReceivedCallbackFn) {
 
 export async function getServerGame (playerName, yourPick, responseReceivedCallbackFn) {
     waiting.setWaitingGameTrue();
-    let url = `https://us-central1-schere-stein-papier-ee0C9.cloudfunctions.net/widgets/play?playerName=${playerName}&playerHand=${yourPick}`;
+
+    let url = `localhost/play?playerName=${playerName}&playerHand=${yourPick}`;
     const data = await getData(url);
+    responseReceivedCallbackFn();
     const choice = data.choice;
     const outcome = data.win;
     responseReceivedCallbackFn();
