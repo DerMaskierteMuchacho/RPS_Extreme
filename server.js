@@ -11,8 +11,16 @@ const HOST = '0.0.0.0';
 const app = express();
 app.use(express.static(path.resolve('public')));
 //app.use(noteRoutes);
+
+
 app.get('/', (req, res) => {
     //res.send('Hello World' + random),
+
+    let redis = require('redis');
+    //https://www.hamrodev.com/en/tutorials/node-and-redis-via-docker
+    //redis.createClient(6379, "localhost");
+    //redis.createClient();
+
     res.sendFile(path.join(__dirname + '/View/index.html'))
 });
 
@@ -52,6 +60,8 @@ class Game {
         this.enemyPick = enemyPick;
     }
 }
+
+const dbUrl = "localhost:6379";
 
 app.listen(PORT, HOST);
 console.log(`Running on http://${HOST}:${PORT}`);
