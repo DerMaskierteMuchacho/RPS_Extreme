@@ -20,16 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="20e08f13-2fc1-4cae-a6e5-2ec223cbce6b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wed02Notes/Wed02Notes/.idea/Wed02Notes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Wed02Notes/Wed02Notes/.idea/Wed02Notes.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wed02Notes/Wed02Notes/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wed02Notes/Wed02Notes/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wed02Notes/Wed02Notes/.idea/jsLibraryMappings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wed02Notes/Wed02Notes/data/notes.db" beforeDir="false" afterPath="$PROJECT_DIR$/Wed02Notes/Wed02Notes/data/notes.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wed02Notes/Wed02Notes/public/images/important-note.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Wed02Notes/Wed02Notes/public/images/shin_chan.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/View/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/View/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/game-service.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/game-service.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/model.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/model.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/view.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/view.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/noteRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/noteRoutes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/server.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -121,5 +117,71 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="2539" height="492" key="GridCell.Tab.0.bottom" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.0.bottom/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.0.center" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.0.center/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.0.left" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.0.left/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.0.right" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.0.right/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.1.bottom" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.1.bottom/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.1.center" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.1.center/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.1.left" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.1.left/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.1.right" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.1.right/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.2.bottom" timestamp="1618403018379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.2.bottom/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018379" />
+    <state width="2539" height="492" key="GridCell.Tab.2.center" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.2.center/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.2.left" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.2.left/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.2.right" timestamp="1618403018378">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.2.right/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018378" />
+    <state width="2539" height="492" key="GridCell.Tab.3.bottom" timestamp="1618403018379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.3.bottom/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018379" />
+    <state width="2539" height="492" key="GridCell.Tab.3.center" timestamp="1618403018379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.3.center/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018379" />
+    <state width="2539" height="492" key="GridCell.Tab.3.left" timestamp="1618403018379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.3.left/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018379" />
+    <state width="2539" height="492" key="GridCell.Tab.3.right" timestamp="1618403018379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2539" height="492" key="GridCell.Tab.3.right/-3840.-418.2560.1413/0.0.2560.1400@0.0.2560.1400" timestamp="1618403018379" />
   </component>
 </project>

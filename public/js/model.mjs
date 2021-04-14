@@ -48,11 +48,10 @@ export let history = [];
 export const textValMappings = {0: "Stein", 1: "Papier", 2: "Schere"}; //, 3: "Brunnen", 4: "Streichholz"};
 const NUMBER_OF_PICKS = 3;
 
-export function playLocalGame() {
-    const yourPick = getYourPick();
+export function playLocalGame(playerHand) {
     const enemyPickVal = Math.round(Math.random() * 2);
-    const outcomeText = evaluateLocalGame(yourPick.yourPickVal, enemyPickVal);
-    return new Game(outcomeText, yourPick.yourPickText, textValMappings[enemyPickVal]);
+    const outcomeText = evaluateLocalGame(playerHand.yourPickVal, enemyPickVal);
+    return new Game(outcomeText, playerHand.yourPickText, textValMappings[enemyPickVal]);
 }
 
 export async function playServerGame() {
@@ -86,20 +85,18 @@ function evaluateLocalGame(yourPick, enemyPick) {
 async function evaluateServerGame(playerName, yourPick) {
     if (controller.firstTimeWaiting) {
         controller.setFirstTimeWaitingFalse();
-        controller.setTimeout(evaluateServerGame, LOADING_INTERVAL)
+        //controller.setTimeout(evaluateServerGame, LOADING_INTERVAL)
     }
     if (controller.waitingForGame) {
         view.displayLoadingAnimation();
-        controller.setTimeout(evaluateServerGame, LOADING_INTERVAL);
+        //controller.setTimeout(evaluateServerGame, LOADING_INTERVAL);
     } else {
         //TODO: move service request to controller
         const serverGame = await service.getServerGame(playerName, yourPick, controller.responseReceived);
         controller.setFirstTimeWaitingTrue();
-        const choice = serverGame.enemyPick;
-        let outcome = getOutcomeAsString(serverGame.outcome);
         return {
-            enemyPick: choice,
-            outcome: outcome
+            enemyPick: serverGame.enemyPick,
+            outcome: serverGame.outcome
         };
     }
 }

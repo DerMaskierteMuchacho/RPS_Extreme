@@ -17,14 +17,12 @@ export async function getServerRanking(responseReceivedCallbackFn) {
 export async function getServerGame (playerName, yourPick, responseReceivedCallbackFn) {
     waiting.setWaitingGameTrue();
 
-    let url = `localhost/play?playerName=${playerName}&playerHand=${yourPick}`;
+    let url = `/play?playerName=${playerName}&playerHand=${yourPick}`;
     const data = await getData(url);
     responseReceivedCallbackFn();
-    const choice = data.choice;
-    const outcome = data.win;
-    responseReceivedCallbackFn();
-    return {enemyPick: choice,
-        outcome: outcome};
+    // responseReceivedCallbackFn();
+    return {enemyPick: data.enemyPick,
+        outcome: data.outcome};
 }
 
 async function getData(url) {

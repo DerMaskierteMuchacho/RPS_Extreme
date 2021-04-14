@@ -10,7 +10,7 @@ const EMPTY_RANKING_TEXT = `<h3> Noch kein Ranking vorhanden</h3>`;
 const EMPTY_HISTORY_STRING = '<h3> Noch kein Spiel gespielt </h3>';
 const SERVER_RANKING_MODE_STRING = "Server Ranking";
 const LOCAL_RANKING_MODE_STRING = "lokales Ranking";
-const INSERT_NAME_STRING= "Bitte Namen eingeben";
+const INSERT_NAME_STRING = "Bitte Namen eingeben";
 const SECONDS_BETWEEN_GAMES = 2;
 
 const gameSection = document.querySelector("#gameSection")
@@ -61,7 +61,8 @@ export function initRankingViewLoadingButtons() {
 
 export function initPlayButton() {
     playBtn.addEventListener('click', async function () {
-        let game = model.currentGameMode === model.GameMode.LOCAL_BOT ? model.playLocalGame() : await model.playServerGame();
+        // let game = model.currentGameMode === model.GameMode.LOCAL_BOT ? model.playLocalGame() : await model.playServerGame();
+        let game = await model.playServerGame();
         model.addGameToHistory(game);
         displayPlayedGameAndWait(game);
     });
@@ -75,7 +76,7 @@ export function getPlayerName() {
 export function displayPlayedGameAndWait(game) {
     displayEnemyPickAndOutcome(game.enemyPick, game.outcome);
     displayHistory();
-    evokeAndDisplayTimeout().then();
+    //evokeAndDisplayTimeout().then();
 }
 
 function displayEnemyPickAndOutcome(enemyPickText, resultText) {
@@ -85,15 +86,23 @@ function displayEnemyPickAndOutcome(enemyPickText, resultText) {
 
 export function persistRankingString(rankingType) {
     switch (rankingType) {
-        case "server": serverRankingString = generateRankingHTMLString(model.serverRanking); break;
-        case "local": localRankingString = generateRankingHTMLString(model.localRanking); break;
+        case "server":
+            serverRankingString = generateRankingHTMLString(model.serverRanking);
+            break;
+        case "local":
+            localRankingString = generateRankingHTMLString(model.localRanking);
+            break;
     }
 }
 
 export function displayPersistedRanking(rankingType) {
     switch (rankingType) {
-        case "server": rankingList.innerHTML = model.serverRanking.length === 0 ? EMPTY_RANKING_TEXT : serverRankingString; break;
-        case "local": rankingList.innerHTML = model.localRanking.length === 0 ? EMPTY_RANKING_TEXT : localRankingString; break;
+        case "server":
+            rankingList.innerHTML = model.serverRanking.length === 0 ? EMPTY_RANKING_TEXT : serverRankingString;
+            break;
+        case "local":
+            rankingList.innerHTML = model.localRanking.length === 0 ? EMPTY_RANKING_TEXT : localRankingString;
+            break;
     }
 }
 
