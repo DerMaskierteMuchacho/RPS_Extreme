@@ -1,28 +1,20 @@
 'use strict';
 
-import * as waiting from "./controller.mjs";
-
-export async function getServerRanking(responseReceivedCallbackFn) {
-    waiting.setWaitingRankingTrue();
-    let url = 'https://us-central1-schere-stein-papier-ee0C9.cloudfunctions.net/widgets/ranking';
-    const data = await getData(url);
-    let ranking = [];
-    for (const [key, value] of Object.entries(data)) {
-        ranking.push({name: key, properties: value});
-    }
-    responseReceivedCallbackFn();
-    return ranking;
+export async function getServerRanking() {
+    let url = '/play';
+    return await getData(url);
 }
 
-export async function getServerGame (playerName, yourPick, responseReceivedCallbackFn) {
-    waiting.setWaitingGameTrue();
-
+export async function getServerGame (playerName, yourPick) {
     let url = `/play?playerName=${playerName}&playerHand=${yourPick}`;
     const data = await getData(url);
-    responseReceivedCallbackFn();
-    // responseReceivedCallbackFn();
-    return {enemyPick: data.enemyPick,
-        outcome: data.outcome};
+    return data;
+}
+
+export async function getOrCreateNewPlayer (playerName) {
+    let url = `/player=${playerName}`;
+    const data = await getData(url);
+    return data;
 }
 
 async function getData(url) {

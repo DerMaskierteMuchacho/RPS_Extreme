@@ -4,10 +4,13 @@
   "description": "Node.js on Docker",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js && npm install redis"
   },
   "dependencies": {
     "express": "^4.16.1",
-    "redis": "^3.1.1"
+    "redis": "^3.1.2"
+  },
+  "devDependencies": {
+    "jsonwebtoken": "^8.5.1"
   }
 }

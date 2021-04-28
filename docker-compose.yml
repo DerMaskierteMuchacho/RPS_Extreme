@@ -17,33 +17,9 @@ services:
       mode: replicated
       replicas: 2
 
-  redis:
+  redis-server:
     image: "redis:alpine"
     ports:
       - "6379:6379"
     expose:
       - 6379
-  
-  # service1:
-    # build: .
-    # ports:
-      # - 8090:80
-      # - 2019:2019
-
-  
-  # service2:
-    # build: .
-    # ports:
-      # - 8091:80
-      # - 2020:2019
-
-#  db:
-#    image: postgres:13-alpine
-#    volumes:
-#      - ./.db:/var/lib/postgresql/data
-#    ports:
-#      - 5432:5432
-#    environment:
-#      - POSTGRES_PASSWORD=password
-#      - POSTGRES_USER=postgres
-#      - POSTGRES_DB=mydb
