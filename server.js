@@ -4,6 +4,7 @@ const express = require("express");
 const path = require("path");
 const redis = require("redis");
 const jwt = require("jsonwebtoken");
+const redisScan = require('redisscan');
 
 // Constants
 const PORT = 8080;
@@ -19,53 +20,48 @@ const redisClient = redis.createClient({
 });
 
 redisClient.on('connect', function() {
-    console.log('connected');
+    console.log('connected to redis');
 });
 
 app.use(express.static(path.resolve('public')));
 
-let currentPlayer;
-
 app.get('/', (req, res) => {
-    jwt.verify(req.query.authKey, password, function(err, _) {
-        if(err) {
-            res.send("Authentication failed!");
-        }
-        else {
+    // jwt.verify(req.query.authKey, password, function(err, _) {
+    //     if(err) {
+    //         res.send("Authentication failed!");
+    //     }
+    //     else {
             res.sendFile(path.join(__dirname + '/View/index.html'));
-        }
-    })
+    //     }
+    // })
 });
 
 app.get('/play', function (req, res) {
-    let game = req.query.playerHand;
-    if (game.outcome === "Gewonnen") {
-        redisClient.get(req.query.playerName, function(err, reply) {
-            redisClient.set(parseInt(reply) + 1); })
-    }
-    res.send(playGame(req.query.playerHand));
-});
-
-app.get('/ranking', function (req, res) {
-    // get sorted ranking from redis and return as array of players
-});
-
-app.get('/player', function (req, res) {
-    // get player or create if not exists
+    let playerHand = req.query.playerHand;
     let playerName = req.query.playerName;
-    currentPlayer = new Player(playerName, redisClient.get(playerName))
+    let game = playGame(playerHand);
+
+    if (game.outcome === "Gewonnen") {
+        redisClient.get(playerName, function(err, reply) {
+            if (err) console.log(err);
+            redisClient.set(playerName, reply + 1); })
+    }
+    res.send(game);
 });
 
-app.get('/test', function (req, res) {
-    redisClient.set('framework', 'AngularJS', function(err, reply) {
-        console.log(reply);
+app.get('/players', function (req, res) {
+    let playerNames = [];
+    redisClient.keys('*', function(err, keys) {
+        if (err) console.log(err);
+        Promise.all(keys.map(key => playerNames.push(key))).then(_ => {
+            res.send(playerNames);
+        });
     });
 });
 
-app.get('/test2', function (req, res) {
-    redisClient.get('framework', function(err, reply) {
-        console.log(reply);
-    });
+app.get('/player', async function (req, res) {
+    await createPlayerIfNotExists(req.query.playerName);
+    res.status(200).send("succes");
 });
 
 const textValMappings = {"Stein": 0, "Papier": 1, "Schere": 2};
@@ -78,6 +74,11 @@ function playGame(playerHand) {
     return new Game(outcomeText, playerHand, valTextMappings[enemyPickVal]);
 }
 
+async function addPlayer(ranking, playerName, playerWins) {
+    ranking.push(new Player(playerName, parseInt(playerWins)));
+    return await Promise.resolve(ranking);
+}
+
 function evaluateGame(yourPick, enemyPick) {
     if (yourPick === enemyPick) {
         return "Unentschieden";
@@ -86,6 +87,16 @@ function evaluateGame(yourPick, enemyPick) {
     } else {
         return "Gewonnen";
     }
+}
+
+async function createPlayerIfNotExists(playerName) {
+    await redisClient.exists(playerName, function(err, reply) {
+        if (err) console.log(err);
+        if (reply !== 1) {
+            redisClient.set(playerName, '0');
+            console.log("new Player");
+        }
+    });
 }
 
 class Game {
@@ -99,11 +110,7 @@ class Game {
 class Player {
     constructor(name, wins) {
         this.name = name;
-        if (wins === undefined) {
-            this.wins = 0;
-        } else {
-            this.wins = wins;
-        }
+        this.wins = wins;
     }
     rank;
 }

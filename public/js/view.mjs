@@ -1,11 +1,12 @@
 'use strict';
 import * as controller from "./controller.mjs";
 import * as model from "./model.mjs";
+import * as service from "./game-service.mjs";
 
-const EMPTY_RANKING_STRING = `<h3> Noch kein Ranking vorhanden</h3>`;
+const EMPTY_RANKING_STRING = `<h3> Noch keine anderen Spieler</h3>`;
 const EMPTY_HISTORY_STRING = '<h3> Noch kein Spiel gespielt </h3>';
 const INSERT_NAME_STRING = "Bitte Namen eingeben";
-const MAX_LENGTH_OF_RANKING = 10;
+const MAX_LENGTH_OF_RANKING = 20;
 
 const gameSection = document.querySelector("#gameSection")
 const startSection = document.querySelector("#rankingSection");
@@ -20,10 +21,10 @@ const outcomeField = document.querySelector("#outcomeField");
 const enemyPickField = document.querySelector("#enemyPickField");
 
 export function initStartButton() {
-    startBtn.addEventListener('click', function () {
+    startBtn.addEventListener('click', async function () {
         const playerName = getPlayerName();
         if (playerName.length > 0) {
-            controller.getOrCreatePlayer(playerName);
+            await service.createPlayerIfNotExists(playerName);
             controller.loadGameView(playerName);
         } else {
             alertUserWhenNameEmpty();
@@ -32,17 +33,16 @@ export function initStartButton() {
 }
 
 export function initBackButton() {
-        backBtn.addEventListener('click', event => {
-            clearWhenBack();
-            switchPageView();
-            model.loadRankingView().then();
-        });
+    backBtn.addEventListener('click', _ => {
+        clearWhenBack();
+        switchPageView();
+        model.loadRankingView().then();
+    });
 }
 
 export function initPlayButton() {
     playBtn.addEventListener('click', async function () {
         let game = await model.playGame();
-        console.log(game.enemyPick);
         model.addGameToHistory(game);
         displayPlayedGame(game);
     });
@@ -67,7 +67,13 @@ export function displayHistory() {
 }
 
 export function displayRanking(ranking) {
-    rankingList.innerHTML = ranking.length === 0 ? EMPTY_RANKING_STRING : generateRankingHTMLString(ranking);
+    if (ranking === undefined || ranking.length === 0)
+    {
+        rankingList.innerHTML = EMPTY_RANKING_STRING;
+    }
+    else {
+        rankingList.innerHTML = generateRankingHTMLString(ranking);
+    }
 }
 
 export function switchPageView() {
@@ -105,7 +111,7 @@ function generateRankingHTMLString(ranking) {
 }
 
 function rankingEntryHTMLString(player) {
-    return `<li> ${player.rank}. Rang mit ${player.wins} Siegen: ${player.name} </li>`;
+    return `<li> ${player} </li>`;
 }
 
 function generateHistoryHTMLString() {

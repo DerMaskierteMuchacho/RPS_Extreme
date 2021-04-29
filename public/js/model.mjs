@@ -23,7 +23,6 @@ export class Player {
 }
 
 const MAX_LENGTH_OF_HISTORY = 5;
-export let localRanking = [];
 export let history = [];
 export const valTextMappings = {0: "Stein", 1: "Papier", 2: "Schere"};
 
@@ -39,13 +38,10 @@ function getYourPick() {
     return {yourPickVal: yourPickVal, yourPickText: valTextMappings[yourPickVal]};
 }
 
-//TODO: split up
 export async function loadRankingView() {
-    view.displayRanking(await service.getServerRanking());
-}
-
-export function addPlayerToLocalRanking(playerName) {
-    localRanking.push(new Player(playerName));
+    let ranking = await service.getServerRanking();
+    ranking.sort();
+    view.displayRanking(ranking);
 }
 
 export function addGameToHistory(game) {
@@ -53,27 +49,11 @@ export function addGameToHistory(game) {
     if (history.length > MAX_LENGTH_OF_HISTORY) history.length = MAX_LENGTH_OF_HISTORY;
 }
 
-export function alreadyExistsLocal(playerName) {
-    for (let i = 0; i < localRanking.length; i++) {
-        if (playerName === (localRanking[i].name)) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-export function prepareForExistingPlayer(existingPlayerIndex) {
-    let existingPlayer = localRanking.splice(existingPlayerIndex, 1)[0];
-    localRanking.push(existingPlayer);
-}
-
 export function clearHistory() {
     history.length = 0;
 }
 
-function sortAndRank() {
-    let ranking = localRanking;
-
+function sortAndRank(ranking) {
     ranking.sort((p1, p2) => {
         return p2.wins - p1.wins;
     });
