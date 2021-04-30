@@ -19,7 +19,7 @@ const redisClient = redis.createClient({
 });
 
 redisClient.on('connect', function() {
-    console.log('connected to redis');
+    console.log('Connected to redis-server');
 });
 
 app.use(express.static(path.resolve('public')));
@@ -30,7 +30,7 @@ app.get('/', (req, res) => {
             res.sendFile(path.join(__dirname + '/public/img/authentication failed.png'));
         }
         else {
-            res.sendFile(path.join(__dirname + '/View/index.html'));
+            res.sendFile(path.join(__dirname + '/view/index.html'));
         }
     })
 });
