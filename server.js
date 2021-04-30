@@ -4,7 +4,6 @@ const express = require("express");
 const path = require("path");
 const redis = require("redis");
 const jwt = require("jsonwebtoken");
-const redisScan = require('redisscan');
 
 // Constants
 const PORT = 8080;
@@ -26,14 +25,14 @@ redisClient.on('connect', function() {
 app.use(express.static(path.resolve('public')));
 
 app.get('/', (req, res) => {
-    // jwt.verify(req.query.authKey, password, function(err, _) {
-    //     if(err) {
-    //         res.send("Authentication failed!");
-    //     }
-    //     else {
+    jwt.verify(req.query.authKey, password, function(err, _) {
+        if(err) {
+            res.sendFile(path.join(__dirname + '/public/img/authentication failed.png'));
+        }
+        else {
             res.sendFile(path.join(__dirname + '/View/index.html'));
-    //     }
-    // })
+        }
+    })
 });
 
 app.get('/play', function (req, res) {
@@ -74,11 +73,6 @@ function playGame(playerHand) {
     return new Game(outcomeText, playerHand, valTextMappings[enemyPickVal]);
 }
 
-async function addPlayer(ranking, playerName, playerWins) {
-    ranking.push(new Player(playerName, parseInt(playerWins)));
-    return await Promise.resolve(ranking);
-}
-
 function evaluateGame(yourPick, enemyPick) {
     if (yourPick === enemyPick) {
         return "Unentschieden";
@@ -94,7 +88,6 @@ async function createPlayerIfNotExists(playerName) {
         if (err) console.log(err);
         if (reply !== 1) {
             redisClient.set(playerName, '0');
-            console.log("new Player");
         }
     });
 }

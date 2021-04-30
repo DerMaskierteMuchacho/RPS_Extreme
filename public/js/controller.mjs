@@ -9,8 +9,8 @@ export function initStartView() {
     view.initStartButton();
     view.initBackButton();
     view.initPlayButton();
-    model.loadRankingView().then();
-    view.displayRanking();
+    model.loadStartingView().then();
+    view.displayPlayers();
 }
 
 export function loadGameView(playerName) {

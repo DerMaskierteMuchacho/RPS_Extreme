@@ -6,15 +6,15 @@ import * as service from "./game-service.mjs";
 const EMPTY_RANKING_STRING = `<h3> Noch keine anderen Spieler</h3>`;
 const EMPTY_HISTORY_STRING = '<h3> Noch kein Spiel gespielt </h3>';
 const INSERT_NAME_STRING = "Bitte Namen eingeben";
-const MAX_LENGTH_OF_RANKING = 20;
+const MAX_LENGTH_OF_RANKING = 15;
 
 const gameSection = document.querySelector("#gameSection")
-const startSection = document.querySelector("#rankingSection");
+const startingSection = document.querySelector("#startingSection");
 const startBtn = document.querySelector("#startBtn");
 const playBtn = document.querySelector("#playBtn");
 const backBtn = document.querySelector("#backBtn");
 const historyList = document.querySelector("#historyList");
-const rankingList = document.querySelector("#rankingList");
+const playerList = document.querySelector("#playerList");
 const nameInputBox = document.querySelector("#nameInputBox");
 const playerNameField = document.querySelector("#playerName");
 const outcomeField = document.querySelector("#outcomeField");
@@ -36,7 +36,7 @@ export function initBackButton() {
     backBtn.addEventListener('click', _ => {
         clearWhenBack();
         switchPageView();
-        model.loadRankingView().then();
+        model.loadStartingView().then();
     });
 }
 
@@ -66,22 +66,22 @@ export function displayHistory() {
     historyList.innerHTML = model.history.length === 0 ? EMPTY_HISTORY_STRING : generateHistoryHTMLString();
 }
 
-export function displayRanking(ranking) {
+export function displayPlayers(ranking) {
     if (ranking === undefined || ranking.length === 0)
     {
-        rankingList.innerHTML = EMPTY_RANKING_STRING;
+        playerList.innerHTML = EMPTY_RANKING_STRING;
     }
     else {
-        rankingList.innerHTML = generateRankingHTMLString(ranking);
+        playerList.innerHTML = generatePlayersHTMLString(ranking);
     }
 }
 
 export function switchPageView() {
-    if (startSection.hidden) {
-        startSection.hidden = false;
+    if (startingSection.hidden) {
+        startingSection.hidden = false;
         gameSection.classList.add("hidden");
     } else {
-        startSection.hidden = true;
+        startingSection.hidden = true;
         gameSection.classList.remove("hidden");
     }
 }
@@ -102,15 +102,15 @@ export function getPick() {
     return document.querySelector('input[name="pick"]:checked');
 }
 
-function generateRankingHTMLString(ranking) {
+function generatePlayersHTMLString(ranking) {
     let rankingHTMLString = "";
     for (let i = 0; i < MAX_LENGTH_OF_RANKING; i++) {
-        rankingHTMLString += rankingEntryHTMLString(ranking[i]);
+        rankingHTMLString += playerEntryHTMLString(ranking[i]);
     }
     return rankingHTMLString;
 }
 
-function rankingEntryHTMLString(player) {
+function playerEntryHTMLString(player) {
     return `<li> ${player} </li>`;
 }
 

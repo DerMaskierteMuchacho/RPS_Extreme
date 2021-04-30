@@ -3,7 +3,6 @@
 export async function getServerRanking() {
     let url = '/players';
     let ranking = await getData(url);
-    console.log(ranking);
     return ranking;
 }
 

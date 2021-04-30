@@ -38,10 +38,10 @@ function getYourPick() {
     return {yourPickVal: yourPickVal, yourPickText: valTextMappings[yourPickVal]};
 }
 
-export async function loadRankingView() {
-    let ranking = await service.getServerRanking();
-    ranking.sort();
-    view.displayRanking(ranking);
+export async function loadStartingView() {
+    let players = await service.getServerRanking();
+    players.sort();
+    view.displayPlayers(players);
 }
 
 export function addGameToHistory(game) {
