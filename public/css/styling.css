@@ -1,11 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mr+Dafoe&family=Quicksand&family=Raleway&display=swap');
+
 :root {
     --dark-color: #272727;
     --bright-color: #afafaf;
+    --accent-color: #6495ed;
+    --heighlight-color: #ffffff;
 }
 
 body {
     background-color: var(--dark-color);
     color: var(--bright-color);
+    font-family: Raleway, sans-serif;
 }
 
 section {
@@ -17,18 +24,76 @@ ul {
 }
 
 h1, h2, button, ul, p {
-    color: var(--bright-color); font-family: 'Helvetica Neue', sans-serif; letter-spacing: -1px; line-height: 1;
+    color: var(--bright-color);
+    line-height: 1;
+}
+ h1 {
+   color: var(--accent-color);
+   font-family: Quicksand;
+   font-weight: 300;
+   font-size: 64px;
+   margin-bottom: 0px;
+ }
+
+h2 {
+  font-size: 32px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+h3 {
+  font-family: 'Mr Dafoe';
+  letter-spacing: 10px;
+  text-transform: uppercase;
+  font-size: 50px;
+  margin-top:-30px;
+  margin-bottom: 100px;
+  transform: rotate(-15deg);
+  margin-left: 300px;
+  color: red;
+}
+
+h4 {
+  font-weight: 300;
+  color: var(--accent-color);
+}
+
+input{
+    background-color: var(--bright-color);
+    border-radius:25px;
+    border: 2px solid var(--bright-color);
+    display:inline-block;
+    color: var(--dark-color);
+    padding:5px;
+    text-decoration:none;
+    cursor: pointer;
 }
 
 button {
-    background-color: var(--bright-color);
-    border-radius:12px;
-    border:1px solid var(--dark-color);
-    display:inline-block;
-    color: var(--dark-color);
-    padding:5px 5px;
+    border: 1px solid var(--bright-color);
+    background-color: var(--dark-color);
+    border-radius: 25px;
     text-decoration:none;
     cursor: pointer;
+    display:inline-block;
+    padding: 10px;
+    color: var(--bright-color);
+}
+
+button:hover {
+  background-color: var(--heighlight-color);
+  color: var(--dark-color);
+  border: 1px solid var(--heighlight-color);
+}
+
+input:hover {
+  background-color: var(--heighlight-color);
+
+}
+
+input:focus {
+  border: 2px solid var(--accent-color);
+  background-color: var(--heighlight-color);
 }
 
 .hidden {
@@ -39,10 +104,7 @@ button {
     display: none;
 }
 
-input {
-    color: var(--dark-color);
-    border-radius:12px;
-}
+
 
 #backBtn, #modeBtn {
     margin: 15px;
@@ -53,5 +115,6 @@ input {
 }
 
 .big {
-    font-size: large; font-weight: bold;
+    font-size: large;
+    font-weight: bold;
 }
